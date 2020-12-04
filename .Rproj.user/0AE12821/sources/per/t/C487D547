@@ -1,0 +1,24 @@
+{
+    "id": "C487D547",
+    "path": "~/Final project/scripts/plots.R",
+    "project_path": "scripts/plots.R",
+    "type": "r_source",
+    "hash": "1727034598",
+    "contents": "",
+    "dirty": false,
+    "created": 1606740287648.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "34,50",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1607089547,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1607089547577,
+    "read_only": false,
+    "read_only_alternatives": []
+}

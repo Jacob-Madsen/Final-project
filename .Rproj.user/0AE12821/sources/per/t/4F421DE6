@@ -1,0 +1,25 @@
+{
+    "id": "4F421DE6",
+    "path": "~/Final project/scripts/data_organisation.R",
+    "project_path": "scripts/data_organisation.R",
+    "type": "r_source",
+    "hash": "4124160085",
+    "contents": "",
+    "dirty": false,
+    "created": 1606756358020.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "4,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1607074144,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1607074144746,
+    "read_only": false,
+    "read_only_alternatives": []
+}
