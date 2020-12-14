@@ -312,6 +312,73 @@ neighbour_17 <- data_17[,25:34] %>%
          avoid_none = recode(avoid_none,"0" = "not checked", "1" = "checked", "8" = "dont know", "9" = "NA"))
          
 
+#making summary function work to have overview-dataframes for plotting on the question
+
+#1981
+neighbour_sum_81 <-  summary(neighbour_81) %>% 
+  as.data.frame() %>% 
+  separate(Freq, c("status", "frequency"), sep = ":") %>% 
+  arrange(desc(frequency))%>%
+  rename(avoid_who = Var2) 
+
+neighbour_sum_81$frequency <- str_replace_all(neighbour_sum_81$frequency, "\\s+", "") %>% 
+  as.numeric()
+
+neighbour_sum_81$avoid_who <- str_replace_all(neighbour_sum_81$avoid_who, "\\s+", "")
+
+
+
+#1990
+neighbour_sum_90 <-  summary(neighbour_90) %>% 
+  as.data.frame() %>% 
+  separate(Freq, c("status", "frequency"), sep = ":") %>% 
+  arrange(desc(frequency))%>% 
+  rename(avoid_who = Var2)
+
+neighbour_sum_90$frequency <- str_replace_all(neighbour_sum_90$frequency, "\\s+", "") %>% 
+  as.numeric()
+
+neighbour_sum_90$avoid_who <- str_replace_all(neighbour_sum_90$avoid_who, "\\s+", "")
+
+
+#1999
+neighbour_sum_99 <-  summary(neighbour_99) %>% 
+  as.data.frame() %>% 
+  separate(Freq, c("status", "frequency"), sep = ":") %>% 
+  arrange(desc(frequency))%>% 
+  rename(avoid_who = Var2)
+
+neighbour_sum_99$frequency <- str_replace_all(neighbour_sum_99$frequency, "\\s+", "") %>% 
+  as.numeric()
+
+neighbour_sum_99$avoid_who <- str_replace_all(neighbour_sum_99$avoid_who, "\\s+", "")
+
+
+#2008
+neighbour_sum_08 <-  summary(neighbour_08) %>% 
+  as.data.frame() %>% 
+  separate(Freq, c("status", "frequency"), sep = ":") %>% 
+  arrange(desc(frequency))%>% 
+  rename(avoid_who = Var2)
+
+neighbour_sum_08$frequency <- str_replace_all(neighbour_sum_08$frequency, "\\s+", "") %>% 
+  as.numeric()
+
+neighbour_sum_08$avoid_who <- str_replace_all(neighbour_sum_08$avoid_who, "\\s+", "")
+
+
+#2017
+neighbour_sum_17 <-  summary(neighbour_17) %>% 
+  as.data.frame() %>% 
+  separate(Freq, c("status", "frequency"), sep = ":") %>% 
+  arrange(desc(frequency)) %>% 
+  rename(avoid_who = Var2)
+
+neighbour_sum_17$frequency <- str_replace_all(neighbour_sum_17$frequency, "\\s+", "") %>% 
+  as.numeric()
+
+neighbour_sum_17$avoid_who <- str_replace_all(neighbour_sum_17$avoid_who, "\\s+", "")
+
 
 #####################################################################################
 
@@ -321,8 +388,10 @@ neighbour_17 <- data_17[,25:34] %>%
 #V337
 class_81 <- data_81$V337
 class_81 <-  factor(class_81)
-levels(class_81) <- c("AB", "C1","C2", "DE")
+levels(class_81) <- c("AB","C1","C2","DE")
+class_81 <- fct_rev(class_81)
 
+summary(class_81)
 
 #1990
 #NA

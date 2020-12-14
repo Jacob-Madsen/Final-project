@@ -23,8 +23,16 @@ data_frame_81 %>%
   count(trust_ppl_81) %>% 
   mutate(percent = (n / sum(n)) * 100) %>% 
   ggplot(aes(x = trust_ppl_81, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5) +
+  labs(title = "Percentage of respondents trusting other people in 1981",
+       x = "Trust in people",
+       y = "Percent") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.2
 #1990
@@ -32,8 +40,16 @@ data_frame_90 %>%
   count(trust_ppl_90) %>% 
   mutate(percent = (n / sum(n)) * 100) %>% 
   ggplot(aes(x = trust_ppl_90, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge", fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)  +
+  labs(title = "Percentage of respondents trusting other people in 1990",
+       x = "Trust in people",
+       y = "Percent") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.3
 #1999
@@ -41,8 +57,16 @@ data_frame_99 %>%
   count(trust_ppl_99) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
   ggplot(aes(x = trust_ppl_99, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5) +
+  labs(title = "Percentage of respondents trusting other people in 1999",
+       x = "Trust in people",
+       y = "Percent") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.4
 #2008
@@ -50,8 +74,16 @@ data_frame_08 %>%
   count(trust_ppl_08) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
   ggplot(aes(x = trust_ppl_08, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5) +
+  labs(title = "Percentage of respondents trusting other people in 2008",
+       x = "Trust in people",
+       y = "Percent") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.5
 #2017
@@ -59,8 +91,17 @@ data_frame_17 %>%
   count(trust_ppl_17) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
   ggplot(aes(x = trust_ppl_17, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5) +
+  labs(title = "Percentage of respondents trusting other people in 2017",
+       x = "Trust in people",
+       y = "Percent") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
 
 #tendency: People are bevoming more trusting in other people 
 
@@ -163,17 +204,253 @@ data_frame_17 %>%
 #Tendency clear: Resentment against foreigners taking jobs (topping in 1999) - this resentment continues until today, but maybe not at the same strength (so not the gradual incresing xenophobia, but it is going up and down)
 
 
-###############################
-###############################
-#Simple comparisons of levels in different coloumns
+#######################################
+#######################################
+
+#Question overviews in absolute numbers
+
+#############################
+
+#Overview of the neighbour question
 
 #P2.1
-#Trust in people and reluctance to having foregin workers as neighbours
 #1981
-data_frame_81 %>%
-  filter(!is.na(avoid_foreign_workers)) %>%
-  group_by(trust_ppl_81) %>%
-  count(avoid_foreign_workers, sort = TRUE)
+#P.2.1.1
+#dataframe
+neighbour_sum_81 %>%  
+  filter(status != "NA's       ") %>% 
+  filter(status != "not checked") %>%
+  filter(status != "dont know  ") %>%
+  view()
+
+#P.2.1.2
+#plot full
+neighbour_sum_81 %>% 
+  filter(status == "checked    ") %>% 
+  ggplot(aes(x = reorder(avoid_who, -frequency), y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 1981",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 40,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P.2.1.3
+#plot only xenophobia-related
+neighbour_sum_81 %>% 
+  filter(avoid_who %in% c("avoid_minority_sects","avoid_other_race")) %>% 
+  filter(status != "NA's       ") %>% 
+  ggplot(aes(x = avoid_who, y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Who respondents would not like to be neighbour to 1981",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 20,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+
+#P2.2
+#1990
+#P2.2.1
+#dataframe
+neighbour_sum_90 %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "not checked") %>%
+  filter(status != "dont know  ") %>%
+  view()
+
+#P2.2.2
+#plot full
+neighbour_sum_90 %>% 
+  filter(status == "checked    ") %>% 
+  ggplot(aes(x = reorder(avoid_who, -frequency), y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 1990",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 40,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P2.2.3
+#plot only xenophobia-related
+neighbour_sum_90 %>% 
+  filter(avoid_who %in% c("avoid_foreign_workers","avoid_other_race","avoid_muslims")) %>% 
+  filter(status != "NA's       ") %>% 
+  ggplot(aes(x = avoid_who, y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Who respondents would not like to be neighbour to 1990",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 20,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+
+#P2.3
+#1999
+#P2.3.1
+#dataframe
+neighbour_sum_99 %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "not checked") %>%
+  filter(status != "dont know  ") %>%
+  view()
+
+#P2.3.2
+#plot full
+neighbour_sum_99 %>% 
+  filter(status == "checked    ") %>% 
+  ggplot(aes(x = reorder(avoid_who, -frequency), y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 1999",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 40,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P2.3.3
+#plot only xenophobia-related
+neighbour_sum_99 %>% 
+  filter(avoid_who %in% c("avoid_immigrants","avoid_other_race","avoid_muslims")) %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "dont know  ") %>% 
+  ggplot(aes(x = avoid_who, y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 1999",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 20,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P2.4
+#2008
+#P2.4.1
+#dataframe
+neighbour_sum_99 %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "not checked") %>%
+  filter(status != "dont know  ") %>%
+  view()
+
+#P2.4.2
+#plot full
+neighbour_sum_08 %>% 
+  filter(status == "checked    ") %>% 
+  ggplot(aes(x = reorder(avoid_who, -frequency), y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 2008",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 40,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P2.4.3
+#plot only xenophobia-related
+neighbour_sum_08 %>% 
+  filter(avoid_who %in% c("avoid_immigrants","avoid_other_race","avoid_muslims")) %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "dont know  ") %>%
+  ggplot(aes(x = avoid_who, y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 2008",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 20,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P2.5
+#2017
+#P2.5.1
+#dataframe
+neighbour_sum_17 %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "not checked") %>%
+  filter(status != "dont know  ") %>%
+  view()
+
+#P2.5.2
+#plot full
+neighbour_sum_17 %>% 
+  filter(status != "NA's       ") %>% 
+  ggplot(aes(x = avoid_who, y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")
+
+#P2.5.3
+#plot only xenophobia-related
+neighbour_sum_17 %>% 
+  filter(avoid_who %in% c("avoid_immigrants_foreign_workers","avoid_other_race","avoid_muslims")) %>% 
+  filter(status != "NA's       ") %>% 
+  filter(status != "dont know  ") %>%
+  ggplot(aes(x = avoid_who, y = frequency, fill = status)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title = "Who respondents would not like to be neighbour to 2017",
+       x = "Avoid who",
+       y = "Frequency") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 20,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+
+#############################
+
+#Overview of the allow to work question
+
+#P2.6
+#1990
+data_frame_90 %>% 
+  count(allow_work_90) %>% 
+  ggplot(aes(x = allow_work_90, y = n)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
+
+#P2.7
+#1999
+data_frame_99 %>% 
+  count(allow_work_99) %>% 
+  ggplot(aes(x = allow_work_99, y = n)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
+
+#P2.8
+#2008
+data_frame_08 %>% 
+  count(allow_work_08) %>% 
+  ggplot(aes(x = allow_work_08, y = n)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
+
+#P2.9
+#2017
+data_frame_17 %>% 
+  count(allow_work_17) %>% 
+  ggplot(aes(x = allow_work_17, y = n)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
 
 
 ###############################
@@ -283,7 +560,7 @@ data_frame_17 %>%
 #Based on socio-economial identification
 
 #1
-#Percentage of the different socio- economic classes that would not like to be neighbours with immigrants or foreign workers
+#Percentage of the different socio- economic classes that would not like to be neighbors with immigrants or foreign workers
 #NB: Socio- economic class is only available for 1981 and 2017
 
 #P4.1
@@ -294,9 +571,16 @@ data_frame_81 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_foreign_workers != "not checked") %>% 
-  ggplot(aes(x = class_81, y = percent, fill = avoid_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  ggplot(aes(x = class_81, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  labs(title = "Percentage of different class-identifications not wanting to \nbe neighbours with foreign workers 1981",
+       x = "Class-identification",
+       y = "Percent checked in 'avoid foreign workers'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P4.2
 #2017: mainly working class
@@ -306,17 +590,26 @@ data_frame_17 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_immigrants_foreign_workers != "not checked") %>%
+  filter(avoid_immigrants_foreign_workers != "dont know") %>%
   filter(class_17 != "NA") %>% 
-  ggplot(aes(x = class_17, y = percent, fill = avoid_immigrants_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  filter(class_17 != "dont know") %>% 
+  ggplot(aes(x = class_17, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  labs(title = "Percentage of different class-identifications not wanting to \nbe neighbours with foreign workers 2017",
+       x = "Class-identification",
+       y = "Percent checked in 'avoid foreign workers'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 
 #2
 #Percentage of the different socio- economic classes that would not like to be neighbours with people of 'antoher race'
 
 #P4.3
-#1981: mainly upperclass and higher middleclass (AB and C1)
+#1981: Mainly upperclass and middleclass
 data_frame_81 %>% 
   count(class_81,avoid_other_race) %>% 
   group_by(class_81) %>% 
@@ -334,11 +627,12 @@ data_frame_17 %>%
   group_by(class_17) %>% 
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
-  filter(avoid_other_race != "not checked") %>% 
+  filter(avoid_other_race != "not checked") %>%
+  filter(avoid_other_race != "dont know") %>% 
   filter(class_17 != "NA") %>% 
+  filter(class_17 != "dont know") %>% 
   ggplot(aes(x = class_17, y = percent, fill = avoid_other_race)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  geom_bar(stat = "identity", position = "dodge")
 
 
 #3
@@ -364,10 +658,11 @@ data_frame_17 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_muslims != "not checked") %>% 
+  filter(avoid_muslims != "dont know") %>% 
   filter(class_17 != "NA") %>% 
+  filter(class_17 != "dont know") %>% 
   ggplot(aes(x = class_17, y = percent, fill = avoid_muslims)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  geom_bar(stat = "identity", position = "dodge")
 
 
 #4
@@ -380,8 +675,9 @@ data_frame_81 %>%
   group_by(class_81) %>% 
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
-  ggplot(aes(x = class_81, y = percent, fill = trust_ppl_81)) +
-  geom_bar(stat = "identity", position = "dodge") + 
+  filter(trust_ppl_81 != "undetermined") %>% 
+  ggplot(aes(x = class_81, y = percent, fill = trust_ppl_81))+
+  geom_bar(stat = "identity", position = "dodge") +
   scale_x_discrete(drop = FALSE)
 
 #P4.8
@@ -391,9 +687,11 @@ data_frame_17 %>%
   group_by(class_17) %>% 
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
+  filter(trust_ppl_17 != "undetermined") %>% 
+  filter(class_17 != "NA") %>% 
+  filter(class_17 != "dont know") %>% 
   ggplot(aes(x = class_17, y = percent, fill = trust_ppl_17)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  geom_bar(stat = "identity", position = "dodge")
 
 
 #5
@@ -1311,103 +1609,5 @@ data_frame_17 %>%
 
 ##################################################################
 
-#Based on age
-
-
-
-#######################################
-#######################################
-
-#Question overviews in absolute numbers
-
-#############################
-
-#Overview of the neighbour question
-
-#P5.1
-#1981
-neighbour_sum_81 <-  summary(neighbour_81) %>% 
-  as.data.frame() %>% 
-  separate(Freq, c("status", "frequency"), sep = ":")
-
-#Det kunne være fint hvis den kunne sorteres!!
-
-view(neighbour_sum_81)
-
-neighbour_sum_81 %>% 
-  filter(status != "NA's       ") %>%
-  filter(status != "not checked") %>%
-  ggplot(aes(x = Var2, y = frequency, fill = status)) +
-  geom_bar(stat = "identity", position = "dodge")
-
-
-
-#search: split coloumn by regex in tidyverse - tidyr guide
-
-
-
-#P5.2
-#1990
-neighbour_sum_90 <-  summary(neighbour_90) %>% 
-  as.data.frame()
-
-#P5.3
-#1999
-neighbour_sum_99 <-  summary(neighbour_99) %>% 
-  as.data.frame()
-
-#P5.4
-#2008
-neighbour_sum_08 <-  summary(neighbour_08) %>% 
-  as.data.frame()
-
-#P5.5
-#2017
-neighbour_sum_17 <-  summary(neighbour_17) %>% 
-  as.data.frame()
-
-
-view(neighbour_sum_81)
-view(neighbour_sum_90)
-view(neighbour_sum_99)
-view(neighbour_sum_08)
-view(neighbour_sum_17)
-
-
-#############################
-
-#Overview of the allow to work question
-
-#P5.6
-#1990
-data_frame_90 %>% 
-  count(allow_work_90) %>% 
-  ggplot(aes(x = allow_work_90, y = n)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
-
-#P5.7
-#1999
-data_frame_99 %>% 
-  count(allow_work_99) %>% 
-  ggplot(aes(x = allow_work_99, y = n)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
-
-#P5.8
-#2008
-data_frame_08 %>% 
-  count(allow_work_08) %>% 
-  ggplot(aes(x = allow_work_08, y = n)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
-
-#P5.9
-#2017
-data_frame_17 %>% 
-  count(allow_work_17) %>% 
-  ggplot(aes(x = allow_work_17, y = n)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  geom_text(aes(label=round(n, digits = 2)), vjust=1.6, color="white", size=3.5)
 
 
