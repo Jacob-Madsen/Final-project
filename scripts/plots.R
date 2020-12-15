@@ -170,35 +170,80 @@ data_frame_90 %>%
   count(allow_work_90) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
   ggplot(aes(x = allow_work_90, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5) +
+  coord_flip() +
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' oppinion on foreign workers taking jobs 1990",
+       x = "Oppinion",
+       y = "Percentage of answers") +
+  theme_replace() +
+  theme(plot.title = element_text(hjust = 1.7, vjust=0),
+        axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.12
 #1999: Most 'limit amount of immigrants'
 data_frame_99 %>% 
   count(allow_work_99) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
+  filter(allow_work_99 != "NA") %>%
   ggplot(aes(x = allow_work_99, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5) +
+  coord_flip() +
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' oppinion on foreign workers taking jobs 1999",
+       x = "Oppinion",
+       y = "Percentage of answers") +
+  theme_replace() +
+  theme(plot.title = element_text(hjust = 1.7, vjust=0),
+        axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.13
 #2008: Most 'limit amount of immigrants' (compared to 1990: more 'as long as there is jobs for danes' and more 'everybody allowed' )
 data_frame_08 %>% 
   count(allow_work_08) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
+  filter(allow_work_08 != "NA") %>%
   ggplot(aes(x = allow_work_08, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  coord_flip() +
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' oppinion on foreign workers taking jobs 2008",
+       x = "Oppinion",
+       y = "Percentage of answers") +
+  theme_replace() +
+  theme(plot.title = element_text(hjust = 1.7, vjust=0),
+        axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P1.14
 #2017 (if few jobs - should Danes be prioritized over immigrants?) Most: 'dont agree and 'either or' - tendency of resentmen against foreign workers
 data_frame_17 %>% 
   count(allow_work_17) %>% 
   mutate(percent = (n / sum(n)) * 100)%>% 
+  filter(allow_work_17 != "NA") %>%
   ggplot(aes(x = allow_work_17, y = percent)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="white", size=3.5)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  coord_flip() +
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' oppinion on foreign workers taking jobs 2017",
+       x = "Oppinion",
+       y = "Percentage of answers") +
+  theme_replace() +
+  theme(plot.title = element_text(hjust = 3.5, vjust=0),
+        axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 
 #Tendency clear: Resentment against foreigners taking jobs (topping in 1999) - this resentment continues until today, but maybe not at the same strength (so not the gradual incresing xenophobia, but it is going up and down)
@@ -727,9 +772,43 @@ data_frame_81 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_foreign_workers != "not checked") %>% 
-  ggplot(aes(x = proud_81, y = percent, fill = avoid_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  filter(avoid_foreign_workers != "dont know") %>%
+  filter(proud_81 != "undetermined") %>%
+  filter(proud_81 != "NA") %>% 
+  ggplot(aes(x = proud_81, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' proudness of Denmark compared \nto wish to avoid foreign workers 1981",
+       x = "How proud of Denmark",
+       y = "Percentage of answers checked 'avoid foreign workers'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+
+#P4.10.1
+#1999: Mainly proud
+data_frame_99 %>% 
+  count(proud_99,avoid_immigrants) %>% 
+  group_by(proud_99) %>% 
+  mutate(percent = (n / sum(n)) * 100) %>%
+  ungroup() %>% 
+  filter(avoid_immigrants != "not checked") %>%
+  filter(avoid_immigrants != "dont know") %>%
+  filter(proud_99 != "NA") %>% 
+  filter(proud_99 != "undetermined") %>% 
+  ggplot(aes(x = proud_99, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' proudness of Denmark compared \nto wish to avoid immigrants 1999",
+       x = "How proud of Denmark",
+       y = "Percentage of answers checked 'avoid immigrants'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P4.11
 #2017: Mainly proud
@@ -739,10 +818,20 @@ data_frame_17 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_immigrants_foreign_workers != "not checked") %>%
+  filter(avoid_immigrants_foreign_workers != "dont know") %>%
   filter(proud_17 != "NA") %>% 
-  ggplot(aes(x = proud_17, y = percent, fill = avoid_immigrants_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  filter(proud_17 != "undetermined") %>% 
+  ggplot(aes(x = proud_17, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' proudness of Denmark compared to\nwish to avoid foreign workers and immigrants 2017",
+       x = "How proud of Denmark",
+       y = "Percentage of answers checked 'avoid immmigrants/foreign workers'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #2
 #Percentage of the national-proud and un-prooud that would not like to be neighbours with ppl of 'other race'
@@ -783,10 +872,19 @@ data_frame_81 %>%
   group_by(proud_81) %>% 
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
-  filter(avoid_minority_sects != "not checked") %>% 
-  ggplot(aes(x = proud_81, y = percent, fill = avoid_minority_sects)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  filter(avoid_minority_sects != "not checked") %>%
+  filter(proud_81 != "NA") %>% 
+  ggplot(aes(x = proud_81, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' proudness of Denmark 1981",
+       x = "How proud of Denmark",
+       y = "Percentage of answers checked 'avoid minority sects'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P4.15
 #1990: Mainly proud
@@ -796,9 +894,18 @@ data_frame_90 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_muslims != "not checked") %>% 
+  filter(proud_90 != "undetermined") %>%
   ggplot(aes(x = proud_90, y = percent, fill = avoid_muslims)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' proudness of Denmark 1990",
+       x = "How proud of Denmark",
+       y = "Percentage of answers checked 'avoid muslims'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P4.16
 #2017: Mainly proud
@@ -808,10 +915,19 @@ data_frame_17 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_muslims != "not checked") %>% 
-  filter(proud_17 != "NA") %>% 
+  filter(proud_17 != "NA") %>%  
+  filter(proud_17 != "undetermined") %>%
   ggplot(aes(x = proud_17, y = percent, fill = avoid_muslims)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  scale_x_discrete(drop = FALSE)
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' proudness of Denmark 1990",
+       x = "How proud of Denmark",
+       y = "Percentage of answers checked 'avoid muslims'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 
 
@@ -973,8 +1089,17 @@ data_frame_81 %>%
   mutate(percent = (n / sum(n)) * 100) %>%
   ungroup() %>% 
   filter(avoid_foreign_workers != "not checked") %>% 
-  ggplot(aes(x = sex_81, y = percent, fill = avoid_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge")
+  ggplot(aes(x = sex_81, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#00BFC4")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' sex compared to wish to avoid \nforeign workers 1981",
+       x = "Sex",
+       y = "Percentage of answers checked 'avoid foreign workers'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P4.28
 #1990: More male
@@ -985,7 +1110,16 @@ data_frame_90 %>%
   ungroup() %>% 
   filter(avoid_foreign_workers != "not checked") %>% 
   ggplot(aes(x = sex_90, y = percent, fill = avoid_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge")
+  geom_bar(stat = "identity", position = "dodge",fill = "#00BFC4")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' sex compared to wish to avoid \nimmigrants 1990",
+       x = "Sex",
+       y = "Percentage of answers checked 'avoid immmigrants'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #P4.29
 #1999: A bit more female
@@ -997,8 +1131,18 @@ data_frame_99 %>%
   filter(avoid_immigrants != "not checked") %>% 
   filter(avoid_immigrants != "dont know") %>% 
   ggplot(aes(x = sex_99, y = percent, fill = avoid_immigrants)) +
-  geom_bar(stat = "identity", position = "dodge")
-
+  geom_bar(stat = "identity", position = "dodge",fill = "#00BFC4")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' sex compared to wish to avoid \nimmigrants 1999",
+       x = "Sex",
+       y = "Percentage of answers checked 'avoid immmigrants'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
+           
+           
 #P4.30
 #2008: A bit more male
 data_frame_08 %>% 
@@ -1020,8 +1164,17 @@ data_frame_17 %>%
   ungroup() %>% 
   filter(avoid_immigrants_foreign_workers != "not checked") %>%
   filter(avoid_immigrants_foreign_workers != "dont know") %>%
-  ggplot(aes(x = sex_17, y = percent, fill = avoid_immigrants_foreign_workers)) +
-  geom_bar(stat = "identity", position = "dodge")
+  ggplot(aes(x = sex_17, y = percent)) +
+  geom_bar(stat = "identity", position = "dodge",fill = "#00BFC4")+
+  geom_text(aes(label=round(percent, digits = 2)), vjust=1.6, color="black", size=3.5)+
+  labs(title = "Respondents' sex compared to wish to avoid \nimmigrants 1999",
+       x = "Sex",
+       y = "Percentage of answers checked 'avoid immmigrants'") +
+  theme_replace() +
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 0,
+                                   hjust = 0.5, vjust = 0.5),
+        axis.text.y = element_text(colour = "black", size = 15),
+        text = element_text(size = 16))
 
 #2
 #Percentage of the of the the different sexs that would not like to be neighbours with people of 'antoher race'

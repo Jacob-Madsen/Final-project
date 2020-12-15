@@ -783,3 +783,25 @@ data_frame_08 <- data.frame(trust_ppl_08,proud_08,geograph_01_08, geograph_02_08
 
 #2017
 data_frame_17 <- data.frame(trust_ppl_17,proud_17,class_17,year_of_birth_17, sex_17, education_17, allow_work_17, neighbour_17)
+
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#Writing .csv files of the new dataframes
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#1981
+write_csv(data_frame_81, file = "data_output/data_frame_81.csv")
+
+#1990
+write_csv(data_frame_90, file = "data_output/data_frame_90.csv")
+
+#1999
+write_csv(data_frame_99, file = "data_output/data_frame_99.csv")
+
+#2008
+write_csv(data_frame_08, file = "data_output/data_frame_08.csv")
+
+#2017
+write_csv(data_frame_17, file = "data_output/data_frame_17.csv")
