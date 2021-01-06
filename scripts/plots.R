@@ -443,13 +443,13 @@ neighbour_sum_99 %>%
 #plot full
 neighbour_sum_99 %>% 
   filter(status == "checked    ") %>% 
-  ggplot(aes(x = reorder(avoid_who, -frequency), y = frequency, fill = status)) +
-  geom_bar(stat = "identity", position = "dodge")+
-  labs(title = "Who respondents would not like to be neighbour to 1999",
+  ggplot(aes(x = reorder(avoid_who, -frequency), y = frequency)) +
+  geom_bar(stat = "identity", position = "dodge", fill = "#FF6666")+
+  labs(title = "Who respondents would not like to be neighbour with in 1999",
        x = "Avoid who",
        y = "Frequency") +
   theme_replace() +
-  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 40,
+  theme(axis.text.x = element_text(colour = "black", size = 15, angle = 60,
                                    hjust = 0.5, vjust = 0.5),
         axis.text.y = element_text(colour = "black", size = 15),
         text = element_text(size = 16))
